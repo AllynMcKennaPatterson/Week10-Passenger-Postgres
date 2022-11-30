@@ -1,20 +1,33 @@
 package ie.atu.Passenger_Springboot_Lab;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonTypeId;
+import lombok.*;
 
-@AllArgsConstructor
+import javax.persistence.*;
+
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table
 public class Passenger {
     private String passengerTitle;
     private String passengerName;
     private long passengerId;
     private long passengerPhone;
     private int passengerAge;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long count;
+
+    public Passenger(String passengerTitle, String passengerName, long passengerId, long passengerPhone, int passengerAge) {
+        this.passengerTitle = passengerTitle;
+        this.passengerName = passengerName;
+        this.passengerId = passengerId;
+        this.passengerPhone = passengerPhone;
+        this.passengerAge = passengerAge;
+    }
 
     public String getPassengerTitle() {
         return passengerTitle;
